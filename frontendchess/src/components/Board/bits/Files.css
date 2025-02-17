@@ -1,0 +1,10 @@
+.files{
+    padding-top: calc(0.1 * var(--tile-size));
+    display: flex;
+    grid-column: 2;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--dark-tile);
+    height: calc(0.25 * var(--tile-size));
+    font-size: calc(0.3* var(--tile-size));
+}
