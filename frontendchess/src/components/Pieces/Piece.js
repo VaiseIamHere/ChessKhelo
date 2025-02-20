@@ -1,6 +1,6 @@
-import arbiter from '../../../arbiter/arbiter.js'
-import { useAppContext } from '../../../contexts/Context.js'
-import { generateCandidateMoves } from '../../../reducers/actions/move.js'
+import arbiter from '../../arbiter/arbiter.js'
+import { useAppContext } from '../../contexts/Context.js'
+import { generateCandidateMoves } from '../../reducers/actions/move.js'
 
 const Piece = ({
     rank,
@@ -9,7 +9,7 @@ const Piece = ({
 }) => {
 
     const { appState, dispatch } = useAppContext()
-    const { turn } = appState
+    const { turn, castleDirection, position: currentPosition } = appState
     
     const onDragStart = (e) => {
         e.dataTransfer.effectAllowed = 'move'
@@ -18,9 +18,10 @@ const Piece = ({
             e.target.style.display = 'none'
         }, 0)
         if(turn === piece[0]){
-            const candidateMoves = arbiter.getRegularMoves({ 
-                position: appState.position[appState.position.length - 1],
-                prevPosition: appState.position[appState.position.length - 2],
+            const candidateMoves = arbiter.getValidMoves({ 
+                position: currentPosition[currentPosition.length - 1],
+                prevPosition: currentPosition[currentPosition.length - 2],
+                castleDirection: castleDirection[turn],
                 piece,
                 rank,
                 file})

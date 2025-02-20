@@ -1,8 +1,9 @@
 import Ranks from './bits/Ranks.js'
 import Files from './bits/Files.js'
-import Pieces from './Pieces/Pieces.js';
+import Pieces from '../Pieces/Pieces.js';
 import './Board.css';
 import { useAppContext } from '../../contexts/Context.js';
+import Popup from '../Popup/Popup.js';
 
 const Board = () => {
     
@@ -40,6 +41,8 @@ const Board = () => {
         </div>
         
         <Pieces />
+
+        <Popup />
 
         <Files files={files} />
     </div>
